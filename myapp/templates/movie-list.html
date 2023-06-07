@@ -1,0 +1,56 @@
+{%extends 'base.html'%}
+{%block title_block%}
+<title>movie-list</title>
+{%endblock%}
+{%block body_block%}
+Welcome{{request.user}}
+<div class="d-flex justify-content-end">
+
+    <a href=" {%url 'movie-add' %}" class="btn btn-dark "> Add Your New Movie</a>
+    <a href="{%url 'signout' %}" class="ms-5 btn btn-light">Logout</a>
+
+</div>
+<table class="table table-striped">
+    <caption class="caption-top">List of all movies</caption>
+    <tr>
+        <th>Id</th>
+        <th>Image</th>
+        <th>Name</th>
+
+
+        <th>Year</th>
+        <th>Language</th>
+        <th>Rating</th>
+        <th>Action</th>
+    </tr>
+    {%for mv in movies%}
+    <tr>
+        <td>{{forloop.counter}}</td>
+        <td>
+        {%if mv.image%}
+       
+
+            <img src="{{mv.image.url}}" alt="" width="75%" height="100px">
+       
+        {%endif%}
+        </td>
+
+        <td>{{mv.name}}</td>
+        <td>{{mv.year}}</td>
+        <td>{{mv.language}}</td>
+        <td>{{mv.rating}}</td>
+
+        <td><a href="{%url 'movie-detail' mv.id%}" class="btn btn-outline-warning">View</a>
+
+    </tr>
+    {%endfor%}
+
+
+
+
+
+
+</table>
+
+
+{%endblock%}

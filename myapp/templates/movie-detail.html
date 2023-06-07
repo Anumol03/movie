@@ -1,0 +1,43 @@
+{%extends 'base.html'%}
+{%block title_block%}
+<title>todo-list</title>
+{%endblock%}
+{%block body_block%}
+<div class="container">
+    <div class="row">
+        <div class="col-4"></div>
+        <div class="col-4">
+            <div class="card" style="width: 100%">
+                <div class="card-body">
+                    {%if movies.image%}
+                
+            
+                <img src="{{movies.image.url}}" alt="" width="100%" height="200px">
+            
+            {%endif%}
+                  <h5 class="card-title">{{movies.name}}</h5>
+                  
+                </div>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">{{movies.name}}</li>
+                  <li class="list-group-item">{{movies.year}}</li>
+                  <li class="list-group-item">{{movies.rating}}</li>
+                  <li class="list-group-item">{{movies.language}}</li>
+                  
+                </ul>
+                <div class="row">
+                    <div class="col-6">
+                        <a href="{%url 'movie-edit' movies.id%}" class="btn btn-outline-warning form-control">edit</a>
+                    </div>
+                    <div class="col-6">
+                        <a href="{%url 'movie-delete' movies.id%}" class="btn btn-outline-danger form-control">delete</a>
+                    </div>
+                </div>
+                
+              </div>
+        </div>
+        <div class="col-4"></div>
+    </div>
+
+
+{%endblock%}
